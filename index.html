@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Analysis — 4708 Meadow Drive A3, East Vail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16324f; --navy2:#1b3a5c; --gold:#b08d3e; --gold-lt:#d8bc7a;
+    --cream:#faf7f1; --ink:#22303c; --grey:#6b7683; --line:#e5e0d5;
+    --green:#2e7d32; --green-bg:#e9f4ea; --amber:#b07a1b; --amber-bg:#fdf3dd;
+    --red:#b23b3b; --red-bg:#faeaea;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+  a{color:var(--navy2)}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,#12283f,#1b3a5c 55%,#2a537a);color:#fff;padding:72px 0 56px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;right:-120px;top:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(216,188,122,.18),transparent 70%)}
+  .kicker{letter-spacing:.22em;text-transform:uppercase;font-size:12px;font-weight:600;color:var(--gold-lt);margin-bottom:14px}
+  h1{font-family:'Playfair Display',serif;font-size:clamp(30px,4.5vw,46px);line-height:1.15;font-weight:600}
+  .hero p.sub{margin-top:12px;color:#c9d4e0;font-size:16px;max-width:640px}
+  .hero .meta{margin-top:26px;font-size:13px;color:#9fb0c2}
+
+  /* PRICE BAND */
+  .band{background:#fff;border-bottom:1px solid var(--line)}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:0;transform:translateY(-38px)}
+  .card{background:#fff;border:1px solid var(--line);padding:22px 20px;text-align:center}
+  .card:first-child{border-radius:12px 0 0 12px}
+  .card:last-child{border-radius:0 12px 12px 0}
+  .card .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--grey);font-weight:600}
+  .card .val{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);margin-top:6px;font-weight:600}
+  .card.gold{background:var(--navy);border-color:var(--navy)}
+  .card.gold .lbl{color:var(--gold-lt)}
+  .card.gold .val{color:#fff}
+  .card .note{font-size:12px;color:var(--grey);margin-top:4px}
+  .card.gold .note{color:#b6c5d6}
+
+  section{padding:48px 0 8px}
+  h2{font-family:'Playfair Display',serif;font-size:28px;color:var(--navy);font-weight:600;margin-bottom:6px}
+  .rule{width:56px;height:3px;background:var(--gold);border-radius:2px;margin:10px 0 22px}
+  .lead{max-width:820px;color:#3c4956;font-size:15.5px}
+
+  /* SUBJECT GRID */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:24px}
+  .panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:24px}
+  .panel h3{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:12px}
+  .panel ul{list-style:none}
+  .panel li{padding:7px 0 7px 26px;position:relative;font-size:14.5px;border-bottom:1px dashed var(--line)}
+  .panel li:last-child{border-bottom:none}
+  .panel li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:700}
+  .panel.watch li::before{content:"—";color:var(--amber)}
+
+  /* TABLES */
+  .tblwrap{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:20px;overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:760px}
+  th{background:var(--navy);color:#fff;text-align:left;padding:11px 12px;font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  th.cdom{background:var(--gold)}
+  td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
+  tr:nth-child(even) td{background:#fbf9f4}
+  td.addr a{font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-lt)}
+  td.addr a:hover{color:var(--gold)}
+  td.addr .sub{display:block;font-size:12px;color:var(--grey);font-weight:400}
+  td.num{white-space:nowrap;font-variant-numeric:tabular-nums}
+  .badge{display:inline-block;min-width:52px;text-align:center;padding:3px 10px;border-radius:20px;font-weight:700;font-size:12.5px}
+  .b-green{background:var(--green-bg);color:var(--green)}
+  .b-amber{background:var(--amber-bg);color:var(--amber)}
+  .b-red{background:var(--red-bg);color:var(--red)}
+  .subjrow td{background:#f3eede !important;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);font-weight:600}
+  .ext{font-size:11px;color:var(--grey)}
+  .statline{font-size:12.5px;color:var(--grey);margin-top:10px}
+
+  /* CDOM STORY */
+  .cdom-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}
+  .cdom-card{border-radius:12px;padding:24px;border:1px solid var(--line);background:#fff}
+  .cdom-card.good{border-top:5px solid var(--green)}
+  .cdom-card.bad{border-top:5px solid var(--red)}
+  .cdom-card h3{font-size:16px;margin-bottom:12px}
+  .cdom-card.good h3{color:var(--green)} .cdom-card.bad h3{color:var(--red)}
+  .cdom-card li{list-style:none;padding:6px 0;border-bottom:1px dashed var(--line);font-size:14px}
+  .cdom-card li:last-child{border:none}
+  .cdom-card b{font-variant-numeric:tabular-nums}
+  .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.07em;padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:1px}
+  .t-sold{background:var(--gold);color:#fff}
+  .t-active{background:#e3ebf3;color:var(--navy2)}
+  .callout{background:var(--navy);color:#dbe5ef;border-radius:12px;padding:26px 30px;margin-top:24px;font-size:15px}
+  .callout b{color:#fff}
+  .callout .gold{color:var(--gold-lt)}
+
+  /* BARS */
+  .bars{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:20px}
+  .bar-row{display:grid;grid-template-columns:230px 1fr 78px;align-items:center;gap:12px;margin:9px 0;font-size:13px}
+  .bar-track{background:#f0ece2;border-radius:6px;height:22px;position:relative}
+  .bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#2a537a,#1b3a5c)}
+  .bar-fill.sold{background:linear-gradient(90deg,#8a6b25,#b08d3e)}
+  .bar-fill.subj{background:linear-gradient(90deg,#b23b3b,#d05353)}
+  .bar-val{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+  .legend{display:flex;gap:18px;margin-top:14px;font-size:12px;color:var(--grey)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+  footer{margin-top:56px;padding:30px 0 40px;border-top:1px solid var(--line);font-size:12px;color:var(--grey)}
+  @media(max-width:760px){
+    .cards{grid-template-columns:1fr 1fr}
+    .card:nth-child(1){border-radius:12px 0 0 0}.card:nth-child(2){border-radius:0 12px 0 0}
+    .card:nth-child(3){border-radius:0 0 0 12px}.card:nth-child(4){border-radius:0 0 12px 0}
+    .split,.cdom-grid{grid-template-columns:1fr}
+    .bar-row{grid-template-columns:120px 1fr 64px}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="kicker">Competitive Market Analysis</div>
+    <h1>4708 Meadow Drive, Unit A3</h1>
+    <p class="sub">Bighorn Townhomes &bull; East Vail, Colorado &bull; 3 Bed / 2 Bath townhouse &bull; 1,255 SF &bull; oversized 1-car garage &bull; short-term rentals permitted &bull; expandable by ~1,350 SF</p>
+    <div class="meta">Vail MLS data as of July 2, 2026 &nbsp;|&nbsp; East Vail townhouse &amp; condo comparables, 2–3 bed, ≤ 2,000 SF</div>
+  </div>
+</div>
+
+<div class="band"><div class="wrap">
+  <div class="cards">
+    <div class="card gold"><div class="lbl">Recommended List</div><div class="val">$1,499,000</div><div class="note">$1,194 / SF</div></div>
+    <div class="card"><div class="lbl">Anticipated Sale</div><div class="val">$1.42–1.50M</div><div class="note">$1,132–$1,195 / SF</div></div>
+    <div class="card"><div class="lbl">Active Avg $/SF</div><div class="val">$1,193</div><div class="note">8 competing listings</div></div>
+    <div class="card"><div class="lbl">Closed SP/LP</div><div class="val">94.5%</div><div class="note">DOM/CDOM: 90 / 122</div></div>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+<section id="position">
+  <h2>The Opportunity</h2>
+  <div class="rule"></div>
+  <p class="lead">At <b>$1,499,000</b>, this residence prices at the active-market average per square foot while undercutting both $1,695,000 listings — and it stays under the $1.5M search threshold where buyer traffic is deepest. The market has already proven the ceiling: a Meadow Drive townhome closed at <b>$1,298/SF in 9 days at full price</b>. What this unit asks of its price, it pays back in three ways no competitor matches at once: rental income flexibility, expansion upside, and a real garage.</p>
+
+  <div class="split">
+    <div class="panel">
+      <h3>Why It Commands a Premium</h3>
+      <ul>
+        <li>Short-term rentals permitted — investor &amp; hybrid-use buyers can underwrite income</li>
+        <li>Expandable by ~1,350 SF — nearly double the home; add a primary suite &amp; bath</li>
+        <li>Oversized garage + huge storage — rare below $1.5M in this comp set</li>
+        <li>New roof, rebuilt deck, new entry door, paint, carpet &amp; kitchen appliances</li>
+        <li>High vaulted ceilings, gas fireplace, large private stone patio, western sun</li>
+        <li>Adjacent open space &amp; Bighorn Park; walk to Racquet Club amenities &amp; TOV bus</li>
+      </ul>
+    </div>
+    <div class="panel watch">
+      <h3>Priced-In Considerations</h3>
+      <ul>
+        <li>Interior is updated but not remodeled to the level of top comps</li>
+        <li>All 3 bedrooms upstairs share one full bath; second bath sits near the entry</li>
+        <li>Known foundation issues — disclose up front with an engineer's report and repair bids so buyers can price certainty, not fear</li>
+        <li>1969 construction (roof &amp; major exterior items recently addressed)</li>
+        <li>Expansion concept solves the bath split &amp; finish gap — market it as the plan</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="cdom">
+  <h2>Days on Market Tells the Story</h2>
+  <div class="rule"></div>
+  <p class="lead">CDOM — cumulative days on market — is the most revealing column in this dataset. Split the comps at 60 days and the pattern is unmistakable:</p>
+  <div class="cdom-grid">
+    <div class="cdom-card good">
+      <h3>Under 60 days on market</h3>
+      <ul>
+        <li><a href="https://www.zillow.com/homes/4682-Meadow-Dr-31-Vail-CO-81657_rb/" target="_blank">4682 Meadow Dr 31</a><span class="tag t-sold">SOLD</span> — <b>9 days, 100% of list</b> ($1,298/SF)</li>
+        <li><a href="https://www.zillow.com/homedetails/5175-Black-Gore-Dr-UNIT-4-Vail-CO-81657/13500668_zpid/" target="_blank">5175 Black Gore 4</a><span class="tag t-active">ACTIVE</span> — <b>0 days</b>, just listed</li>
+        <li><a href="https://www.zillow.com/homes/4514-Timber-Falls-Ct-1006-Vail-CO-81657_rb/" target="_blank">4514 Timber Falls 1006</a><span class="tag t-active">ACTIVE</span> — <b>6 days</b></li>
+        <li><a href="https://www.zillow.com/homes/4255-Columbine-Way-16-Vail-CO-81657_rb/" target="_blank">4255 Columbine Way 16</a><span class="tag t-active">ACTIVE</span> — <b>29 days</b></li>
+        <li><a href="https://www.zillow.com/homedetails/4770-Bighorn-Rd-H4-Vail-CO-81657/439207644_zpid/" target="_blank">4770 Bighorn H4</a><span class="tag t-active">ACTIVE</span> — <b>33 days</b></li>
+        <li><a href="https://www.zillow.com/homes/4594-Meadow-Dr-A4-Vail-CO-81657_rb/" target="_blank">4594 Meadow A4</a><span class="tag t-active">ACTIVE</span> — <b>43 days</b> (after $75K cut)</li>
+      </ul>
+    </div>
+    <div class="cdom-card bad">
+      <h3>Over 60 days on market</h3>
+      <ul>
+        <li><a href="https://www.zillow.com/homes/3930-Fall-Line-Dr-12-Vail-CO-81657_rb/" target="_blank">3930 Fall Line 12</a><span class="tag t-sold">SOLD</span> — <b>342 days</b>; $1.925M → sold $1.5M (<b>−22%</b>)</li>
+        <li><a href="https://www.vailhomesandcondos.com/property/co90_1012984--4770-Bighorn-Road-Unit-B4-Vail-CO-81657/" target="_blank">4770 Bighorn B4</a><span class="tag t-sold">SOLD</span> — <b>442 days</b>; sold at 94.4% of list</li>
+        <li><a href="https://www.zillow.com/homes/4670-Vail-Racquet-Club-Dr-18-Vail-CO-81657_rb/" target="_blank">4670 Racquet Club 18</a><span class="tag t-active">ACTIVE</span> — <b>204 days</b>, $100K cut</li>
+        <li><a href="https://www.zillow.com/homes/4682-Meadow-Dr-H26-Vail-CO-81657_rb/" target="_blank">4682 Meadow H26</a><span class="tag t-active">ACTIVE</span> — <b>126 days</b>, $100K cut</li>
+        <li><a href="https://www.zillow.com/homes/4600-Vail-Racquet-Club-Dr-Vail-CO-81657_rb/" target="_blank">4600 Racquet Club 6-10</a><span class="tag t-active">ACTIVE</span> — <b>104 days</b></li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <b>The discipline that protects your price:</b> launch at <span class="gold">$1,499,000</span>, review pricing at <b>day 30</b>, adjust by <b>day 45</b> if the market hasn't responded. This data shows chasing the market down costs <b>6–22%</b>; a timely correction costs a fraction of that. Selling fast at full price — like Meadow Dr 31 — is how listings beat their number.
+  </div>
+</section>
+
+<section id="solds">
+  <h2>Closed Sales — East Vail Townhouses (Last 12 Months)</h2>
+  <div class="rule"></div>
+  <div class="tblwrap"><table>
+    <tr><th>Address / Complex</th><th>Sold</th><th>Bd/Ba</th><th>SqFt</th><th>Orig. List</th><th>Sold Price</th><th>SP/LP</th><th>$/SF</th><th class="cdom">CDOM</th></tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/3930-Fall-Line-Dr-12-Vail-CO-81657_rb/" target="_blank">3930 Fall Line Drive 12 ↗</a><span class="sub">Pitkin Creek Park &bull; 1980</span></td>
+      <td class="num">9/2025</td><td class="num">3/3</td><td class="num">1,704</td><td class="num">$1,925,000</td><td class="num">$1,500,000</td><td class="num">89.0%</td><td class="num">$880</td>
+      <td><span class="badge b-red">342</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4682-Meadow-Dr-31-Vail-CO-81657_rb/" target="_blank">4682 Meadow Drive 31 ↗</a><span class="sub">Mountain Meadows &bull; 1979</span></td>
+      <td class="num">10/2025</td><td class="num">2/3</td><td class="num">1,229</td><td class="num">$1,595,000</td><td class="num">$1,595,500</td><td class="num">100.0%</td><td class="num">$1,298</td>
+      <td><span class="badge b-green">9</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.vailhomesandcondos.com/property/co90_1012984--4770-Bighorn-Road-Unit-B4-Vail-CO-81657/" target="_blank">4770 Bighorn Road B4 ↗</a><span class="sub">Racquet Club Townhomes &bull; 1981</span></td>
+      <td class="num">3/2026</td><td class="num">3/3</td><td class="num">1,426</td><td class="num">$1,695,000</td><td class="num">$1,600,000</td><td class="num">94.4%</td><td class="num">$1,122</td>
+      <td><span class="badge b-red">442</span></td>
+    </tr>
+  </table></div>
+  <p class="statline">Closed averages: 1,453 SF &bull; $1,565,167 sold &bull; $1,100/SF &bull; SP/LP 94.5%. The 9-day full-price sale at $1,298/SF is the strongest evidence that correctly positioned Meadow Drive product commands $1,200+/SF.</p>
+</section>
+
+<section id="actives">
+  <h2>Active Competition — July 2, 2026</h2>
+  <div class="rule"></div>
+  <div class="tblwrap"><table>
+    <tr><th>Address / Complex</th><th>Type</th><th>Bd/Ba</th><th>SqFt</th><th>List Price</th><th>$/SF</th><th>Reduced</th><th class="cdom">CDOM</th></tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4255-Columbine-Way-16-Vail-CO-81657_rb/" target="_blank">4255 Columbine Way 16 ↗</a><span class="sub">Bighorn Terrace &bull; 1967</span></td>
+      <td>Duplex</td><td class="num">2/2</td><td class="num">900</td><td class="num">$1,179,000</td><td class="num">$1,310</td><td class="num">—</td>
+      <td><span class="badge b-green">29</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4670-Vail-Racquet-Club-Dr-18-Vail-CO-81657_rb/" target="_blank">4670 Vail Racquet Club Dr 18 ↗</a><span class="sub">Racquet Club Condos &bull; 1979</span></td>
+      <td>Condo</td><td class="num">2/2</td><td class="num">1,026</td><td class="num">$1,275,000</td><td class="num">$1,243</td><td class="num">−$100K</td>
+      <td><span class="badge b-red">204</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homedetails/5175-Black-Gore-Dr-UNIT-4-Vail-CO-81657/13500668_zpid/" target="_blank">5175 Black Gore Drive 4 ↗</a><span class="sub">Cedar Point &bull; 1973</span></td>
+      <td>Townhouse</td><td class="num">3/2</td><td class="num">1,165</td><td class="num">$1,275,000</td><td class="num">$1,094</td><td class="num">—</td>
+      <td><span class="badge b-green">0</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4594-Meadow-Dr-A4-Vail-CO-81657_rb/" target="_blank">4594 Meadow A4 ↗</a><span class="sub">Sunwood at Vail &bull; 1979</span></td>
+      <td>Condo</td><td class="num">3/2</td><td class="num">1,413</td><td class="num">$1,450,000</td><td class="num">$1,026</td><td class="num">−$75K</td>
+      <td><span class="badge b-green">43</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4514-Timber-Falls-Ct-1006-Vail-CO-81657_rb/" target="_blank">4514 Timber Falls Court 1006 ↗</a><span class="sub">Timber Falls &bull; 1976</span></td>
+      <td>Condo</td><td class="num">3/2</td><td class="num">1,221</td><td class="num">$1,450,000</td><td class="num">$1,188</td><td class="num">—</td>
+      <td><span class="badge b-green">6</span></td>
+    </tr>
+    <tr class="subjrow">
+      <td class="addr">★ 4708 Meadow Drive A3 — SUBJECT<span class="sub">Bighorn Townhomes &bull; 1969 &bull; STR-permitted &bull; expandable ~1,350 SF &bull; garage</span></td>
+      <td>Townhouse</td><td class="num">3/2</td><td class="num">1,255</td><td class="num">$1,499,000</td><td class="num">$1,194</td><td class="num">—</td>
+      <td><span class="badge b-green">—</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4600-Vail-Racquet-Club-Dr-Vail-CO-81657_rb/" target="_blank">4600 Vail Racquet Club Dr 6-10 ↗</a><span class="sub">Racquet Club Condos &bull; 1977</span></td>
+      <td>Condo</td><td class="num">3/3</td><td class="num">1,152</td><td class="num">$1,495,000</td><td class="num">$1,298</td><td class="num">—</td>
+      <td><span class="badge b-red">104</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homes/4682-Meadow-Dr-H26-Vail-CO-81657_rb/" target="_blank">4682 Meadow Drive H26 ↗</a><span class="sub">Mountain Meadows &bull; 1979</span></td>
+      <td>Condo</td><td class="num">2/3</td><td class="num">1,332</td><td class="num">$1,695,000</td><td class="num">$1,273</td><td class="num">−$100K</td>
+      <td><span class="badge b-red">126</span></td>
+    </tr>
+    <tr>
+      <td class="addr"><a href="https://www.zillow.com/homedetails/4770-Bighorn-Rd-H4-Vail-CO-81657/439207644_zpid/" target="_blank">4770 Bighorn Road H4 ↗</a><span class="sub">Racquet Club Townhomes &bull; 1982</span></td>
+      <td>Townhouse</td><td class="num">3/3</td><td class="num">1,521</td><td class="num">$1,695,000</td><td class="num">$1,114</td><td class="num">—</td>
+      <td><span class="badge b-green">33</span></td>
+    </tr>
+  </table></div>
+  <p class="statline">Active averages: 1,216 SF &bull; $1,193/SF &bull; average list $1,439,250 &bull; median $1,450,000 &bull; median CDOM 38. CDOM badges: <span class="badge b-green">&lt;45</span> <span class="badge b-amber">45–100</span> <span class="badge b-red">&gt;100</span></p>
+</section>
+
+<section id="chart">
+  <h2>Price per Square Foot — Where the Subject Sits</h2>
+  <div class="rule"></div>
+  <div class="bars">
+    <div class="bar-row"><span>4255 Columbine Way 16 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><span class="bar-val">$1,310</span></div>
+    <div class="bar-row"><span>4682 Meadow Dr 31 <span class="ext">(sold)</span></span><div class="bar-track"><div class="bar-fill sold" style="width:99%"></div></div><span class="bar-val">$1,298</span></div>
+    <div class="bar-row"><span>4600 Racquet Club 6-10 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:99%"></div></div><span class="bar-val">$1,298</span></div>
+    <div class="bar-row"><span>4682 Meadow Dr H26 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:97%"></div></div><span class="bar-val">$1,273</span></div>
+    <div class="bar-row"><span>4670 Racquet Club 18 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val">$1,243</span></div>
+    <div class="bar-row"><span><b>★ SUBJECT at $1,499,000</b></span><div class="bar-track"><div class="bar-fill subj" style="width:91%"></div></div><span class="bar-val">$1,194</span></div>
+    <div class="bar-row"><span>4514 Timber Falls 1006 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:91%"></div></div><span class="bar-val">$1,188</span></div>
+    <div class="bar-row"><span>4770 Bighorn B4 <span class="ext">(sold)</span></span><div class="bar-track"><div class="bar-fill sold" style="width:86%"></div></div><span class="bar-val">$1,122</span></div>
+    <div class="bar-row"><span>4770 Bighorn H4 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><span class="bar-val">$1,114</span></div>
+    <div class="bar-row"><span>5175 Black Gore 4 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:84%"></div></div><span class="bar-val">$1,094</span></div>
+    <div class="bar-row"><span>4594 Meadow A4 <span class="ext">(active)</span></span><div class="bar-track"><div class="bar-fill" style="width:78%"></div></div><span class="bar-val">$1,026</span></div>
+    <div class="bar-row"><span>3930 Fall Line 12 <span class="ext">(sold)</span></span><div class="bar-track"><div class="bar-fill sold" style="width:67%"></div></div><span class="bar-val">$880</span></div>
+    <div class="legend">
+      <span><span class="dot" style="background:#1b3a5c"></span>Active listing ($/SF asking)</span>
+      <span><span class="dot" style="background:#b08d3e"></span>Closed sale ($/SF sold)</span>
+      <span><span class="dot" style="background:#b23b3b"></span>Subject at recommended list</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="padding:0">
+    Source: Vail Multi List, Inc. (VMLS) Residential CMA export, 07/02/2026 — Closed &amp; Active, East Vail, 2–3 bed, ≤2,000 SF. External listing links open third-party sites (Zillow / broker IDX) and may display current rather than as-of-date information. This analysis is informational and is not an appraisal. Buyers and sellers should verify all information, including Town of Vail short-term rental licensing and GRFA expansion allowances, to their own satisfaction.
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
