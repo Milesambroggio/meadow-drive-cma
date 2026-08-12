@@ -43,7 +43,7 @@
   .lead{max-width:840px;color:#3c4956;font-size:15.5px;margin-bottom:6px}
 
   .tblwrap{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:20px;overflow-x:auto}
-  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:780px}
+  table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:820px}
   th{background:var(--navy);color:#fff;text-align:left;padding:11px 12px;font-weight:600;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
   td{padding:11px 12px;border-top:1px solid var(--line);vertical-align:top}
   tr:nth-child(even) td{background:#fbf9f4}
@@ -58,6 +58,8 @@
   .t-active{background:var(--green-bg);color:var(--green)}
   .pill{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:600;margin:1px 2px 1px 0;background:#eef2f6;color:var(--navy2)}
   .pill.hot{background:var(--green-bg);color:var(--green)}
+  .pill.am{background:#f5edda;color:#7a5200}
+  .amnote{display:block;font-size:11px;color:var(--grey);font-weight:400;margin-top:3px}
 
   .bars{background:#fff;border:1px solid var(--line);border-radius:12px;padding:26px;margin-top:20px}
   .bar-row{display:grid;grid-template-columns:250px 1fr 80px;align-items:center;gap:12px;margin:9px 0;font-size:13px}
@@ -145,42 +147,48 @@
 <section id="hoa">
   <h2>2 &middot; HOA Cost &amp; Inclusions</h2>
   <div class="rule"></div>
-  <p class="lead">HOA dues and what each association's fee includes, per MLS records. Monthly equivalents are computed from the fee period stated in the listing.</p>
+  <p class="lead">HOA dues, what each association's fee includes, and community amenities, per MLS records. Monthly equivalents are computed from the fee period stated in the listing.</p>
 
   <div class="tblwrap"><table>
-    <tr><th>Property</th><th>Fee as Listed</th><th>Monthly Equivalent</th><th>Annual</th><th>Fee Includes (per MLS)</th></tr>
+    <tr><th>Property</th><th>Fee as Listed</th><th>Monthly Equivalent</th><th>Annual</th><th>Fee Includes (per MLS)</th><th>Community Amenities (per MLS)</th></tr>
     <tr class="subjrow">
       <td class="addr">4708 Meadow Drive A3 <span class="tag t-subj">SUBJECT</span></td>
       <td class="num">$1,950 / quarter</td><td class="num">$650</td><td class="num">$7,800</td>
       <td><span class="pill">Common Area Maintenance</span><span class="pill">Insurance</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Trash</span><span class="pill">Water</span></td>
+      <td>None association-owned<span class="amnote">No Association Amenities field in listing. Community Features field lists pool, clubhouse, fitness, tennis &amp; pickleball &mdash; per the description these reflect the Vail Racquet Club directly across the street.</span></td>
     </tr>
     <tr>
       <td class="addr">5175 Black Gore Dr #4</td>
       <td class="num">$500 / month</td><td class="num">$500</td><td class="num">$6,000</td>
       <td><span class="pill">Common Area Maintenance</span><span class="pill">Insurance</span><span class="pill">Management</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Taxes</span><span class="pill">Trash</span><span class="pill">Water</span></td>
+      <td>None association-owned<span class="amnote">No Association Amenities field in listing (9-unit creekside complex). Community Features field lists area tennis/pickleball, fitness &amp; trails.</span></td>
     </tr>
     <tr>
       <td class="addr">4682 Meadow Dr H26</td>
       <td class="num">$2,417 / quarter</td><td class="num">$806</td><td class="num">$9,668</td>
       <td><span class="pill">Common Area Maintenance</span><span class="pill">Insurance</span><span class="pill">Management</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Trash</span><span class="pill">Water</span></td>
+      <td><span class="pill">Pool</span><span class="pill">Tennis</span><span class="pill">Pickleball</span><span class="pill">Fitness Center</span><span class="amnote">Community Features field. No Association Amenities field; description notes the complex sits "directly across from the amenities of the Vail Racquet Club."</span></td>
     </tr>
     <tr>
       <td class="addr">4580 Vail Racquet Club #16</td>
       <td class="num">$986*</td><td class="num">$986*</td><td class="num">~$11,832*</td>
       <td><span class="pill">Cable TV</span><span class="pill">Common Area Maintenance</span><span class="pill">Insurance</span><span class="pill">Internet</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Trash</span><span class="pill">Water</span><span class="pill">See Remarks</span></td>
+      <td><span class="pill am">Pool</span><span class="pill am">Spa/Hot Tub</span><span class="pill am">Fitness Center</span><span class="pill am">Tennis</span><span class="pill am">Clubhouse</span><span class="pill am">Front Desk</span><span class="pill am">On-Site Management</span><span class="amnote">Association Amenities field; description also notes on-site restaurant/bar.</span></td>
     </tr>
     <tr>
       <td class="addr">4469 Timber Falls #1904</td>
       <td class="num">$3,514*</td><td class="num">~$1,171*</td><td class="num">~$14,056*</td>
       <td><span class="pill hot">Heat</span><span class="pill hot">Gas</span><span class="pill">Common Area Maintenance</span><span class="pill">Management</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Trash</span><span class="pill">Water</span></td>
+      <td><span class="pill am">Pool</span><span class="pill am">Spa/Hot Tub</span><span class="pill am">Tennis</span><span class="amnote">Association Amenities field; description also notes a semi-private hot tub, and Community Features list shuttle service &amp; racquetball.</span></td>
     </tr>
     <tr>
       <td class="addr">4770 Bighorn Rd H4</td>
       <td class="num">$1,368 / month</td><td class="num">$1,368</td><td class="num">$16,416</td>
       <td><span class="pill">Cable TV</span><span class="pill">Common Area Maintenance</span><span class="pill">Internet</span><span class="pill">Sewer</span><span class="pill">Snow Removal</span><span class="pill">Trash</span><span class="pill">Water</span></td>
+      <td><span class="pill am">Pool</span><span class="pill am">Spa/Hot Tub</span><span class="pill am">Fitness Center</span><span class="pill am">Racquetball</span><span class="pill am">Tennis</span><span class="pill am">Front Desk</span><span class="pill am">On-Site Management</span><span class="amnote">Association Amenities field (Vail Racquet Club community).</span></td>
     </tr>
   </table></div>
-  <p class="statline">*Fee period not stated in the MLS feed for these listings; monthly/annual figures assume the amount shown is quarterly for Timber Falls and monthly for Vail Racquet Club &mdash; verify with each association. Heat and gas are included only in the Timber Falls fee. Insurance is not listed in the Bighorn H4 fee inclusions. Taxes are included only in the Black Gore (Cedar Point) fee.</p>
+  <p class="statline">*Fee period not stated in the MLS feed for these listings; monthly/annual figures assume the amount shown is quarterly for Timber Falls and monthly for Vail Racquet Club &mdash; verify with each association. Heat and gas are included only in the Timber Falls fee. Insurance is not listed in the Bighorn H4 fee inclusions. Taxes are included only in the Black Gore (Cedar Point) fee. <b>Amenities:</b> gold tags are the MLS "Association Amenities" field (association-provided); blue tags are the MLS "Community Features" field, which can include nearby facilities not owned by the association.</p>
 </section>
 
 <section id="age">
@@ -220,7 +228,7 @@
 
 <footer>
   <div class="wrap" style="padding:0">
-    Source: Vail Multi List, Inc. (VMLS) via Compass IDX property records, data updated 08/10/2026. Subject listing: MLS# 1014630, listed 07/04/2026 by IMI Resort Properties of Colorado. All prices, square footage, days on market, HOA fees, fee inclusions, year built, and quoted update history are as reported in Vail MLS listing records. Property links open each home's Zillow page for convenience; Zillow may display updated or differing information. Fee periods marked * are not stated in the IDX feed and should be verified with the listing broker or association. This page is informational and is not an appraisal; verify all information independently.
+    Source: Vail Multi List, Inc. (VMLS) via Compass IDX property records, data updated 08/10/2026. Subject listing: MLS# 1014630, listed 07/04/2026 by IMI Resort Properties of Colorado. All prices, square footage, days on market, HOA fees, fee inclusions, amenities, year built, and quoted update history are as reported in Vail MLS listing records. Property links open each home's Zillow page for convenience; Zillow may display updated or differing information. Fee periods marked * are not stated in the IDX feed and should be verified with the listing broker or association. This page is informational and is not an appraisal; verify all information independently.
   </div>
 </footer>
 
