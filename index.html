@@ -60,6 +60,8 @@
   td.num .sub2{display:block;font-size:11px;color:var(--grey)}
   .subjrow td{background:#f3eede !important;border-top:2px solid var(--gold);border-bottom:2px solid var(--gold);font-weight:600}
   .statline{font-size:12.5px;color:var(--grey);margin-top:10px}
+  tfoot td{background:#e9eef4 !important;font-weight:700;border-top:2px solid var(--navy);font-variant-numeric:tabular-nums}
+  tfoot td .sub2{display:block;font-size:10.5px;color:var(--grey);font-weight:600}
   .tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:4px;white-space:nowrap}
   .t-subj{background:var(--navy2);color:#fff;margin-left:6px;vertical-align:1px}
   .t-active{background:var(--green-bg);color:var(--green)}
@@ -128,8 +130,9 @@
       <th data-k="yr" data-t="n">Built<span class="arrow"></span></th>
     </tr></thead>
     <tbody id="tbody"></tbody>
+    <tfoot id="tfoot"></tfoot>
   </table></div>
-  <p class="statline" id="noteLine">Data per Vail MLS listing records as of 08/11/2026. Sold rows show sold price (list price beneath). CDOM = cumulative days on market per each listing's MLS detail field. HOA monthly equivalents computed from the fee period stated in each listing (quarterly fees divided by 3); 4255 Columbine Way 16 is "free from HOA dues" per its listing. This page is informational, not an appraisal &mdash; verify all data independently.</p>
+  <p class="statline" id="noteLine">Data per Vail MLS listing records as of 08/11/2026. Sold rows show sold price (list price beneath) and average by sold price. CDOM = cumulative days on market per each listing's MLS detail field. HOA monthly equivalents computed from the fee period stated in each listing (quarterly fees divided by 3); 4255 Columbine Way 16 is "free from HOA dues" per its listing and is excluded from the HOA average. Averages recalculate to whatever is currently filtered. This page is informational, not an appraisal &mdash; verify all data independently.</p>
 </section>
 
 <section id="hoa">
@@ -302,6 +305,26 @@ function render(){
       '<td class="num">' + d.yr + '</td></tr>';
   });
   document.getElementById('tbody').innerHTML = html || '<tr><td colspan="10" style="text-align:center;color:#6b7683;padding:24px">No properties match these filters.</td></tr>';
+  var avg = function(key, excludeZero){
+    var arr = rows.map(function(d){ return d[key]; });
+    if (excludeZero) arr = arr.filter(function(v){ return v > 0; });
+    if (!arr.length) return null;
+    return arr.reduce(function(s,v){ return s+v; }, 0) / arr.length;
+  };
+  var foot = '';
+  if (rows.length){
+    var aH = avg('hoa', true);
+    foot = '<tr>' +
+      '<td>AVERAGES<span class="sub2">of ' + rows.length + ' shown</span></td>' +
+      '<td>&mdash;</td><td>&mdash;</td><td>&mdash;</td>' +
+      '<td class="num">' + Math.round(avg('sf')).toLocaleString('en-US') + '</td>' +
+      '<td class="num">' + fmt(Math.round(avg('price'))) + '</td>' +
+      '<td class="num">$' + Math.round(avg('psf')).toLocaleString('en-US') + '</td>' +
+      '<td class="num">' + Math.round(avg('cdom')) + '</td>' +
+      '<td class="num">' + (aH ? '$' + Math.round(aH).toLocaleString('en-US') : '&mdash;') + '</td>' +
+      '<td class="num">' + Math.round(avg('yr')) + '</td></tr>';
+  }
+  document.getElementById('tfoot').innerHTML = foot;
   document.getElementById('fCount').textContent = 'Showing ' + rows.length + ' of ' + DATA.length + ' properties';
   document.querySelectorAll('th .arrow').forEach(function(a){ a.textContent = ''; });
   if (sortKey){
